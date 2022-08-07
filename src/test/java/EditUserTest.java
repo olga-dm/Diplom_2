@@ -23,8 +23,6 @@ public class EditUserTest {
                 .extract().path("accessToken");
 
         user = UserDataGeneration.generateNewUser();
-
-        Thread.sleep(1000);
     }
 
     @After

@@ -24,8 +24,6 @@ public class LoginUserTest {
                 .then().assertThat()
                 .statusCode(SC_OK)
                 .extract().path("accessToken");
-
-        Thread.sleep(1000);
     }
 
     @After

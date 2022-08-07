@@ -14,9 +14,8 @@ public class CreateUserTest {
     String accessToken;
 
     @Before
-    public void before() throws InterruptedException {
+    public void before() {
         user = UserDataGeneration.generateNewUser();
-        Thread.sleep(1000);
     }
 
     @After
