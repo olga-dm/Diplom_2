@@ -4,7 +4,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import service.UserService;
-import utils.DataGeneration;
+import utils.UserDataGeneration;
 
 import static org.apache.http.HttpStatus.*;
 import static org.hamcrest.Matchers.equalTo;
@@ -14,8 +14,9 @@ public class CreateUserTest {
     String accessToken;
 
     @Before
-    public void before(){
-        user = DataGeneration.generateNewUser();
+    public void before() throws InterruptedException {
+        user = UserDataGeneration.generateNewUser();
+        Thread.sleep(1000);
     }
 
     @After

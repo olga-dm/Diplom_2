@@ -1,0 +1,11 @@
+dto\userDto\UserDto.class
+dto\userDto\UserRootDto.class
+dto\orderDto\OrderDto.class
+service\IngredientsService.class
+utils\OrderDataGeneration.class
+service\OrderService.class
+dto\orderDto\OrderRootDto.class
+service\RestAssured.class
+service\UserService.class
+dto\ingredientsDto\IngredientsDto.class
+dto\ingredientsDto\IngredientsRootDto.class

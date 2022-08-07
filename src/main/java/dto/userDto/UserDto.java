@@ -5,9 +5,9 @@ import io.qameta.allure.internal.shadowed.jackson.annotation.JsonProperty;
 
 public class UserDto {
 
-    public String email;
-    public String password;
-    public String name;
+    private String email;
+    private String password;
+    private String name;
 
     @JsonCreator
     public UserDto(@JsonProperty(value = "email", required = true) String email,

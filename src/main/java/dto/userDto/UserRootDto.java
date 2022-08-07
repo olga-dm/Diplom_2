@@ -1,12 +1,12 @@
 package dto.userDto;
 
-public class RootDto {
-    public boolean success;
-    public UserDto user;
-    public String accessToken;
-    public String refreshToken;
+public class UserRootDto {
+    private boolean success;
+    private UserDto user;
+    private String accessToken;
+    private String refreshToken;
 
-    public RootDto(boolean success, UserDto user, String accessToken, String refreshToken) {
+    public UserRootDto(boolean success, UserDto user, String accessToken, String refreshToken) {
         this.success = success;
         this.user = user;
         this.accessToken = accessToken;

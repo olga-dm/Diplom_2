@@ -3,7 +3,7 @@ package utils;
 import com.github.javafaker.Faker;
 import dto.userDto.UserDto;
 
-public class DataGeneration {
+public class UserDataGeneration {
     static Faker faker = new Faker();
 
     public static UserDto generateNewUser() {
@@ -18,4 +18,6 @@ public class DataGeneration {
         String password = faker.internet().password();
         return new UserDto(email, password, null);
     }
+
+
 }

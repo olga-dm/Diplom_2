@@ -1,9 +1,10 @@
 import dto.userDto.UserDto;
+import io.qameta.allure.junit4.DisplayName;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import service.UserService;
-import utils.DataGeneration;
+import utils.UserDataGeneration;
 
 import static org.apache.http.HttpStatus.*;
 import static org.hamcrest.Matchers.equalTo;
@@ -13,8 +14,8 @@ public class LoginUserTest {
     String accessToken;
 
     @Before
-    public void before() {
-        UserDto newUser = DataGeneration.generateNewUser();
+    public void before() throws InterruptedException {
+        UserDto newUser = UserDataGeneration.generateNewUser();
         user = new UserDto();
         user.setEmail(newUser.getEmail());
         user.setPassword(newUser.getPassword());
@@ -23,6 +24,8 @@ public class LoginUserTest {
                 .then().assertThat()
                 .statusCode(SC_OK)
                 .extract().path("accessToken");
+
+        Thread.sleep(1000);
     }
 
     @After
@@ -37,6 +40,7 @@ public class LoginUserTest {
     }
 
     @Test
+    @DisplayName("Проверка авторизация с существующим логином и паролем")
     public void checkShouldLogin() {
         UserService.loginUser(user)
                 .then().assertThat()
@@ -45,6 +49,7 @@ public class LoginUserTest {
     }
 
     @Test
+    @DisplayName("Проверка авторизация без ввода пароля")
     public void checkShouldNotLoginWithoutPassword() {
         user.setPassword(null);
         UserService.loginUser(user)
@@ -55,6 +60,7 @@ public class LoginUserTest {
     }
 
     @Test
+    @DisplayName("Проверка авторизация без ввода email")
     public void checkShouldNotLoginWithoutEmail() {
         user.setEmail(null);
         UserService.loginUser(user)
@@ -65,6 +71,7 @@ public class LoginUserTest {
     }
 
     @Test
+    @DisplayName("Проверка авторизация без ввода email и пароля")
     public void checkShouldNotLoginWithoutEmailAndPassword() {
         user.setEmail(null);
         user.setPassword(null);

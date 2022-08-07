@@ -4,7 +4,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import service.UserService;
-import utils.DataGeneration;
+import utils.UserDataGeneration;
 
 import static org.apache.http.HttpStatus.*;
 import static org.hamcrest.Matchers.equalTo;
@@ -14,15 +14,17 @@ public class EditUserTest {
     String accessToken;
 
     @Before
-    public void before() {
-        UserDto newUser = DataGeneration.generateNewUser();
+    public void before() throws InterruptedException {
+        UserDto newUser = UserDataGeneration.generateNewUser();
 
         accessToken = UserService.registerUser(newUser)
                 .then().assertThat()
                 .statusCode(SC_OK)
                 .extract().path("accessToken");
 
-        user = DataGeneration.generateNewUser();
+        user = UserDataGeneration.generateNewUser();
+
+        Thread.sleep(1000);
     }
 
     @After
@@ -48,7 +50,7 @@ public class EditUserTest {
     @Test
     @DisplayName("Проверка изменения данных пользователя с почтой которая уже используется")
     public void checkEditUserWithAuthSameEmail() {
-        UserDto newUser = DataGeneration.generateNewUser();
+        UserDto newUser = UserDataGeneration.generateNewUser();
         UserService.registerUser(newUser)
                 .then().assertThat()
                 .statusCode(SC_OK)
