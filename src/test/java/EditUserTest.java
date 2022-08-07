@@ -14,7 +14,7 @@ public class EditUserTest {
     String accessToken;
 
     @Before
-    public void before() throws InterruptedException {
+    public void before() {
         UserDto newUser = UserDataGeneration.generateNewUser();
 
         accessToken = UserService.registerUser(newUser)

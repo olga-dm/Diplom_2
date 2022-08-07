@@ -14,7 +14,7 @@ public class LoginUserTest {
     String accessToken;
 
     @Before
-    public void before() throws InterruptedException {
+    public void before() {
         UserDto newUser = UserDataGeneration.generateNewUser();
         user = new UserDto();
         user.setEmail(newUser.getEmail());

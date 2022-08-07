@@ -16,7 +16,7 @@ public class CreateOrderTest {
     String accessToken;
 
     @Before
-    public void before() throws InterruptedException {
+    public void before() {
         UserDto newUser = UserDataGeneration.generateNewUser();
         user = new UserDto();
         user.setEmail(newUser.getEmail());
@@ -85,7 +85,7 @@ public class CreateOrderTest {
 
     @Test
     @DisplayName("Проверка создания заказа без авторизации без игредиентов")
-    public void checkCreateOrderWithoutAuthWithoutIngr(){
+    public void checkCreateOrderWithoutAuthWithoutIngr() {
         OrderDataGeneration orderDataGeneration = OrderDataGeneration.getEmptyIngredients();
         OrderService.createWithoutAuth(orderDataGeneration)
                 .then()
@@ -97,7 +97,7 @@ public class CreateOrderTest {
 
     @Test
     @DisplayName("Проверка создания заказа с авторизацией с неверным хэшем")
-    public void checkCreateOrderWithAuthHashIsNotCorrect(){
+    public void checkCreateOrderWithAuthHashIsNotCorrect() {
         OrderDataGeneration orderDataGeneration = OrderDataGeneration.getInstanceHashIsNotCorrect();
 
         OrderService.createOrder(orderDataGeneration, accessToken)
@@ -107,7 +107,7 @@ public class CreateOrderTest {
 
     @Test
     @DisplayName("Проверка создания заказа без авторизации с неверным хэшем")
-    public void checkCreateOrderWithoutAuthHashIsNotCorrect(){
+    public void checkCreateOrderWithoutAuthHashIsNotCorrect() {
         OrderDataGeneration orderDataGeneration = OrderDataGeneration.getInstanceHashIsNotCorrect();
         OrderService.createWithoutAuth(orderDataGeneration)
                 .then()
